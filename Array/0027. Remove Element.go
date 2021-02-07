@@ -1,5 +1,6 @@
 package main
 
+// https://leetcode-cn.com/problems/remove-element/
 func removeElement(nums []int, val int) int {
 	j := 0
 	for i := range nums {
