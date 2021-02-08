@@ -29,6 +29,22 @@ func removeDuplicates(nums []int) int {
 	return j + 1
 }
 
+/*TODO v3 还有优化的话*/
+// 如果数组都是不重复的 [0,1,2,3] ,判不等时交换其实有点浪费,这是1点. 判断成本vs复制成本?
+func removeDuplicates(nums []int) int {
+	j := 0
+	for i := range nums {
+		if nums[i] != nums[j] {
+			j++
+			if i-j > 1 {
+				nums[i], nums[j] = nums[j], nums[i]
+			}
+
+		}
+	}
+	return j + 1
+}
+
 func main() {
 	nums := []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}
 	//nums := []int{1, 1, 2, 2}
