@@ -16,6 +16,22 @@ func searchInsert(nums []int, target int) int {
 	return j
 }
 
+/*v1 二分查找?*/
+//题目给定的条件是一个"排好序的数组"
+func searchInsert(nums []int, target int) int {
+	left := 0
+	right := (len(nums) - 1) / 2
+	if nums[right] == target {
+		return right
+	} else if nums[right] < target {
+
+	} else if nums[right] > target {
+		right := right / 2
+
+	}
+
+}
+
 func main() {
 	nums := []int{1, 3, 5, 6}
 	//aa := searchInsert(nums,5)
