@@ -38,14 +38,24 @@ func guess(num int) int {
 */
 
 func guessNumber(n int) int {
-	if guess(n) == 0 {
-		return n
+	//把n当成mid的值
+	step := 100
+	for {
+		if guess(n) == 0 {
+			return n
+		} else if guess(n) == 1 {
+			n = n - 1
+		} else if guess(n) == -1 {
+			n = n + 1
+		}
 	}
+
 	return -1
 }
 
 func main() {
 	//aa := guessNumber(10) //pick:=6
-	aa := guessNumber(10) //pick:=10
+	//aa := guessNumber(10) //pick:=10
+	aa := guessNumber(60) //pick:=560
 	println(aa)
 }
