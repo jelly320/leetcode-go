@@ -16,7 +16,7 @@ package main
 //	return j
 //}
 
-/*v1 二分查找?*/
+/*v1 Binary Search?*/
 //题目给定的条件是一个"排好序的数组"
 //func searchInsert(nums []int, target int) int {
 //	left := 0
