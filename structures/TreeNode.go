@@ -21,27 +21,38 @@ func Ints2TreeNode(ints []int) *TreeNode {
 		return nil
 	}
 
+	//根节点
 	root := &TreeNode{
 		Val: ints[0],
 	}
+	//1 <nil> <nil>
 
+	//make a slice : type是*TreeNode, 后面数字是len cap
 	queue := make([]*TreeNode, 1, n*2)
+	//fmt.Printf("queue-len:%v -cap:%v \n",len(queue),cap(queue))
+
 	queue[0] = root
 
 	i := 1
 	for i < n {
+		// 每次循环回来,queue[]中,分别是: queue[0]是Left的地址 queue[1]是Right的地址
+		// 这是按  中-左-右的顺序前序保存了
+		//fmt.Printf("start - queue: %v\n",queue)
 		node := queue[0]
 		queue = queue[1:]
+		//fmt.Printf("start 2 - queue: %v\n",queue)
 
 		if i < n && ints[i] != NULL {
-			node.Left = &TreeNode{Val: ints[i]}
+			node.Left = &TreeNode{Val: ints[i]} //取地址
 			queue = append(queue, node.Left)
+			//fmt.Printf("after Add Left - node：%v,queue: %v\n",node,queue)
 		}
 		i++
 
 		if i < n && ints[i] != NULL {
 			node.Right = &TreeNode{Val: ints[i]}
 			queue = append(queue, node.Right)
+			//fmt.Printf("after Add Right - node：%v,queue: %v\n",node,queue)
 		}
 		i++
 	}

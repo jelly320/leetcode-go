@@ -1,6 +1,11 @@
 package leetcode
 
-import "go-leetcode/structures"
+// https://leetcode-cn.com/problems/binary-tree-preorder-traversal/
+
+import (
+	"fmt"
+	"go-leetcode/structures"
+)
 
 // TreeNode define
 type TreeNode = structures.TreeNode
@@ -15,19 +20,26 @@ type TreeNode = structures.TreeNode
  */
 
 // 解法一 递归
-func PreorderTraversal(root *TreeNode) []int {
+func preorderTraversal(root *TreeNode, tarnum int) []int {
+	tarnum++
+	fmt.Printf("===tag: start tarnum: %d===\n", tarnum)
 	res := []int{}
 	if root != nil {
+		fmt.Printf("---tag: forstart---\n")
 		res = append(res, root.Val)
-		tmp := PreorderTraversal(root.Left)
+		tmp := preorderTraversal(root.Left, tarnum) //if tmp= []int{} ,是不会执行for _,t range tmp的
 		for _, t := range tmp {
+			fmt.Printf("tag: for root.Left\n")
 			res = append(res, t)
 		}
-		tmp = PreorderTraversal(root.Right)
+		tmp = preorderTraversal(root.Right, tarnum)
 		for _, t := range tmp {
+			fmt.Printf("tag: for root.Right\n")
 			res = append(res, t)
 		}
+		fmt.Printf("---tag:end for. res: %v---\n", res)
 	}
+	fmt.Printf("===tag: END tagnum:%v ===\n", tarnum)
 	return res
 }
 
