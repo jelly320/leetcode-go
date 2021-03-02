@@ -51,6 +51,7 @@ func preorderTraversal1(root *TreeNode) []int {
 }
 
 func preorder(root *TreeNode, output *[]int) {
+	// output 是一个指向 []int的指针
 	if root != nil {
 		*output = append(*output, root.Val)
 		preorder(root.Left, output)
