@@ -13,8 +13,8 @@ type MyCircularQueue struct {
 func Constructor(k int) MyCircularQueue {
 	return MyCircularQueue{
 		queue: make([]int, k, k),
-		head:  0,
-		tail:  0,
+		head:  -1,
+		tail:  -1,
 	}
 }
 
@@ -40,8 +40,11 @@ func (this *MyCircularQueue) EnQueue(value int) bool {
 	if this.IsFull() {
 		return false
 	}
-	if this.tail == len(this.queue)-1 || this.IsEmpty() {
-		this.tail = 0 //这里会有个问题,等EnQueue(4)的时候,this.head一直没动,一直=0,tail复位到0 Empty就判断有误了
+
+	if this.IsEmpty() {
+		this.head, this.tail = 0, 0
+	} else if this.tail == len(this.queue)-1 {
+		this.tail = 0
 	} else {
 		this.tail++
 	}
@@ -65,7 +68,7 @@ func (this *MyCircularQueue) Rear() int {
 }
 
 func (this *MyCircularQueue) IsEmpty() bool {
-	if this.head == 0 && this.tail == 0 {
+	if this.head == -1 && this.tail == -1 {
 		return true
 	}
 	return false
