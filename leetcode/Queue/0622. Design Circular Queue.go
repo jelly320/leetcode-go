@@ -1,6 +1,8 @@
 package Queue
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // https://leetcode-cn.com/problems/design-circular-queue/
 
@@ -21,22 +23,7 @@ func Constructor(k int) MyCircularQueue {
 // 入队
 func (this *MyCircularQueue) EnQueue(value int) bool {
 	// 成功则返回true,反之返回false
-
-	// 先判断再自增有问题
-	//if ! this.IsFull() {
-	//	this.queue[this.tail] = value
-	//	if this.tail==len(this.queue)-1 {
-	//		this.tail=0
-	//	} else {
-	//		this.tail++
-	//	}
-	//	return true
-	//} else {
-	//	return false
-	//}
-
 	// 先移动再赋值
-	fmt.Printf("%v,%v\n", this.head, this.tail)
 	if this.IsFull() {
 		return false
 	}
@@ -54,17 +41,36 @@ func (this *MyCircularQueue) EnQueue(value int) bool {
 
 // 出队
 func (this *MyCircularQueue) DeQueue() bool {
-	return false
+	if this.IsEmpty() {
+		return false
+	}
+
+	if this.head == len(this.queue)-1 {
+		this.head = 0
+	} else if this.head == this.tail {
+		this.head, this.tail = -1, -1
+	} else {
+		this.head++
+	}
+	// this.queue = this.queue[this.head+1:] 不采取改变queue的方法,而是移动head tail
+
+	return true
 }
 
 // 获取队首元素
 func (this *MyCircularQueue) Front() int {
-	return 1
+	if this.IsEmpty() {
+		return -1
+	}
+	return this.queue[this.head]
 }
 
 // 获取队尾元素
 func (this *MyCircularQueue) Rear() int {
-	return 1
+	if this.IsEmpty() {
+		return -1
+	}
+	return this.queue[this.tail]
 }
 
 func (this *MyCircularQueue) IsEmpty() bool {
@@ -75,9 +81,7 @@ func (this *MyCircularQueue) IsEmpty() bool {
 }
 
 func (this *MyCircularQueue) IsFull() bool {
-	//fmt.Printf("start. %v %v\n", this.head, this.tail)
 	if this.head < this.tail && (this.tail-this.head) == len(this.queue)-1 {
-		//fmt.Printf("<. %v %v\n",this.head,this.tail)
 		return true
 	}
 	if this.head > this.tail && this.head-this.tail == 1 {
@@ -85,6 +89,14 @@ func (this *MyCircularQueue) IsFull() bool {
 		return true
 	}
 	return false
+}
+
+// 输出queue
+func (this *MyCircularQueue) PrintQueue() {
+	for _, v := range this.queue {
+		fmt.Println(v)
+	}
+	fmt.Println(len(this.queue), cap(this.queue))
 }
 
 /**
