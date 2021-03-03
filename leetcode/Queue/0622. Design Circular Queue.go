@@ -45,10 +45,10 @@ func (this *MyCircularQueue) DeQueue() bool {
 		return false
 	}
 
-	if this.head == len(this.queue)-1 {
-		this.head = 0
-	} else if this.head == this.tail {
+	if this.head == this.tail {
 		this.head, this.tail = -1, -1
+	} else if this.head == len(this.queue)-1 {
+		this.head = 0
 	} else {
 		this.head++
 	}
