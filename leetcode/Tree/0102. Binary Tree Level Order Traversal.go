@@ -28,22 +28,27 @@ package leetcode
 2.
 */
 
-//func levelOrder(root *TreeNode) [][]int {
-//
-//	result := &([]*TreeNode{})
-//	getNode(bb, result)
-//
-//}
+func levelOrder(root *TreeNode) [][]int {
 
-func Just(root *TreeNode) [][]*TreeNode {
+	init := []*TreeNode{root}
+	var result [][]int
+	result = append(result, getNodeValue(init))
+	Just(init, &result)
+	return result
+}
+
+func Just(root []*TreeNode, output *[][]int) {
 	//init:= []*TreeNode{root}
-	result := &([][]*TreeNode{})
-	getNode([]*TreeNode{root}, result)
-	return *result
+	//result := &([][]*TreeNode{})
+	if root != nil {
+		newNode := getNode(root)
+		*output = append(*output, getNodeValue(newNode))
+		Just(newNode, output)
+	}
 }
 
 func getNodeValue(rootList []*TreeNode) []int {
-	result := []int{}
+	var result []int
 	for _, v := range rootList {
 		if v != nil {
 			result = append(result, v.Val)
@@ -52,20 +57,22 @@ func getNodeValue(rootList []*TreeNode) []int {
 	return result
 }
 
-func getNode(rootList []*TreeNode, output *[][]*TreeNode) {
-	tmp := []*TreeNode{}
+func getNode(rootList []*TreeNode) []*TreeNode {
+	var output []*TreeNode
+
 	if rootList != nil {
 		for _, v := range rootList {
 			if v != nil {
-				tmp = append(tmp, v.Left)
-				tmp = append(tmp, v.Right)
-				//*output = append(*output, v.Left)
-				//*output = append(*output, v.Right)
+				output = append(output, v.Left)
+				output = append(output, v.Right)
+			} else {
+				return nil
 			}
 		}
-		*output = append(*output, tmp)
+	} else {
+		return nil
 	}
-	getNode(tmp, output)
+	return output
 }
 
 //func getRootVal(root *TreeNode) int {

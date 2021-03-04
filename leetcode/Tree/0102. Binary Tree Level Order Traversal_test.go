@@ -26,7 +26,8 @@ func Test_lyj(t *testing.T) {
 
 	para := []int{3, 9, 20, structures.NULL, structures.NULL, 15, 7}
 	root := structures.Ints2TreeNode(para)
-	t.Log(Just(root))
+	result := levelOrder(root)
+	t.Log(result)
 }
 
 //func Test_Problem102(t *testing.T) {
