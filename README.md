@@ -3,8 +3,8 @@
 二分查找
 
 二叉树
-  inorder preoder postorder  递归 / 迭代
-  层序遍历
+  inorder preoder postorder  递归/迭代
+  层序遍历 BFS(迭代)-借助队列作为辅助结构  DFS(递归)-递归方式隐含使用了系统的栈
 
 队列
 
