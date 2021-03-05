@@ -1,5 +1,6 @@
 package leetcode
 
+// https://leetcode-cn.com/problems/binary-tree-level-order-traversal/
 // https://leetcode-cn.com/leetbook/read/data-structure-binary-tree/xej9yc/
 
 /**
@@ -23,16 +24,15 @@ package leetcode
 ]
 */
 
-/*大概思路:
-1. 每个node是要做一次Preoder
-2.
-*/
-
+/*v0:*/
 func levelOrder(root *TreeNode) [][]int {
 
 	init := []*TreeNode{root}
 	var result [][]int
-	result = append(result, getNodeValue(init))
+	initvalue := getNodeValue(init)
+	if initvalue != nil {
+		result = append(result, initvalue)
+	}
 	Just(init, &result)
 	return result
 }
@@ -42,19 +42,25 @@ func Just(root []*TreeNode, output *[][]int) {
 	//result := &([][]*TreeNode{})
 	if root != nil {
 		newNode := getNode(root)
-		*output = append(*output, getNodeValue(newNode))
+		nodevalue := getNodeValue(newNode)
+		if nodevalue != nil {
+			*output = append(*output, nodevalue)
+		}
 		Just(newNode, output)
 	}
 }
 
 func getNodeValue(rootList []*TreeNode) []int {
 	var result []int
-	for _, v := range rootList {
-		if v != nil {
-			result = append(result, v.Val)
+	if rootList != nil {
+		for _, v := range rootList {
+			if v != nil {
+				result = append(result, v.Val)
+			}
 		}
+		return result
 	}
-	return result
+	return nil
 }
 
 func getNode(rootList []*TreeNode) []*TreeNode {
@@ -65,24 +71,10 @@ func getNode(rootList []*TreeNode) []*TreeNode {
 			if v != nil {
 				output = append(output, v.Left)
 				output = append(output, v.Right)
-			} else {
-				return nil
 			}
 		}
-	} else {
-		return nil
+		return output
 	}
-	return output
-}
+	return nil
 
-//func getRootVal(root *TreeNode) int {
-//	return root.Val
-//}
-//
-//func getLeftVal(root *TreeNode) int {
-//	return root.Left.Val
-//}
-//
-//func getRightVal(root *TreeNode) int {
-//	return root.Right.Val
-//}
+}
