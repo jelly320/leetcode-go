@@ -21,6 +21,7 @@ https://golang.org/pkg/container/list/  双向链表
 https://golang.org/pkg/container/heap/  堆操作
 https://golang.org/pkg/container/ring/  循环列表
 
+一种逻辑结构如果用不同的存储结构去描述或解析,可能就是不同的算法思路? 可以这么理解吗
 
 
 ### 关于数据结构(Hold住基本面)
