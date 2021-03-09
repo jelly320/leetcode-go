@@ -67,6 +67,11 @@ func levelOrder_v1(root *TreeNode) [][]int {
 	return result
 }
 
+/*v2 TODO:学习DFS解法:*/
+func levelOrder_v2(root *TreeNode) [][]int {
+
+}
+
 /*v0:
 执行用时： beats 100%
 内存消耗： beats 5.44%
