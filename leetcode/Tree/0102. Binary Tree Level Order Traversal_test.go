@@ -61,7 +61,9 @@ func Test_Problem102(t *testing.T) {
 		_, p := q.ans102, q.para102
 		fmt.Printf("【input】:%v      ", p)
 		root := structures.Ints2TreeNode(p.one)
-		fmt.Printf("【output】:%v      \n", levelOrder(root))
+		//fmt.Printf("【output】:%v      \n", levelOrder(root))
+		fmt.Printf("【output】:%v      \n", levelOrder_v1(root))
+
 	}
 	fmt.Printf("\n\n\n")
 }

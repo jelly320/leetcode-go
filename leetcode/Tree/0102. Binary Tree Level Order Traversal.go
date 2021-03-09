@@ -24,7 +24,53 @@ package leetcode
 ]
 */
 
-/*v0:*/
+/*v1 学习BFS解法后:
+执行用时： beats 11.35%
+内存消耗：beats 48.38%
+*/
+func levelOrder_v1(root *TreeNode) [][]int {
+	if root == nil {
+		return [][]int{}
+	}
+
+	currentNum, nextLevelNum := 1, 0
+	var tmp []int
+	var result [][]int
+	var queue []*TreeNode
+
+	//根节点首先入队
+	queue = append(queue, root)
+
+	for len(queue) != 0 {
+		if currentNum > 0 {
+			top := queue[0]
+			if top.Left != nil {
+				queue = append(queue, top.Left)
+				nextLevelNum++
+			}
+			if top.Right != nil {
+				queue = append(queue, top.Right)
+				nextLevelNum++
+			}
+			currentNum--
+			tmp = append(tmp, top.Val)
+			queue = queue[1:]
+		}
+		if currentNum == 0 {
+			result = append(result, tmp)
+			currentNum = nextLevelNum
+			nextLevelNum = 0
+			tmp = []int{}
+		}
+
+	}
+	return result
+}
+
+/*v0:
+执行用时： beats 100%
+内存消耗： beats 5.44%
+*/
 func levelOrder(root *TreeNode) [][]int {
 
 	init := []*TreeNode{root}
