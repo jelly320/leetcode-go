@@ -2,7 +2,10 @@ package Stack
 
 // https://leetcode-cn.com/problems/min-stack/
 
-/* v0 */
+/* v0
+执行用时：20 ms, 在所有 Go 提交中击败了83.44%的用户
+内存消耗：10.1 MB, 在所有 Go 提交中击败了7.07%的用户
+*/
 type MinStack struct {
 	stack [][]int
 	top   int
