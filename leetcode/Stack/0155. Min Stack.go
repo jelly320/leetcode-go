@@ -2,6 +2,7 @@ package Stack
 
 // https://leetcode-cn.com/problems/min-stack/
 
+/* v0 */
 type MinStack struct {
 	stack [][]int
 	top   int
@@ -21,16 +22,16 @@ func (this *MinStack) Push(x int) {
 	var min int
 	if this.top == 0 {
 		min = x
+		this.stack = [][]int{}
 	} else {
-		//fmt.Printf("getmin():%v\n",this.GetMin())
 		if x < this.GetMin() {
-			//fmt.Printf("tag <,min: %v; \n",min)
 			min = x
 		} else {
 			min = this.GetMin()
 		}
 	}
-	//fmt.Printf("min: %v; \n",min)
+	//这里没办法使用赋值的方式去覆盖掉原有的值,只能在pop中调整队列,因为不是实际删除元素如果不调整Top就容易得出错误结果
+	//this.stack[this.top]=[]int{x,min}  panic: runtime error: index out of range [0] with length 0
 	this.stack = append(this.stack, []int{x, min})
 	this.top++
 }
@@ -39,6 +40,7 @@ func (this *MinStack) Push(x int) {
 func (this *MinStack) Pop() {
 	if this.top != 0 {
 		this.top--
+		this.stack = this.stack[:this.top]
 	}
 }
 
@@ -52,12 +54,7 @@ func (this *MinStack) Top() int {
 
 // 检索栈中的最小元素
 func (this *MinStack) GetMin() int {
-	var result int
-	if this.top > 0 {
-		return this.stack[this.top-1][1]
-	} else {
-		return result
-	}
+	return this.stack[this.top-1][1]
 }
 
 /**
