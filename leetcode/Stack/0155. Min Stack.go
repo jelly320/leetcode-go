@@ -64,57 +64,85 @@ package Stack
 执行用时：20 ms, 在所有 Go 提交中击败了83.63%的用户
 内存消耗：9.5 MB, 在所有 Go 提交中击败了54.70%的用户
 */
+//type MinStack struct {
+//	stack []int
+//	top   int
+//	min   []int
+//}
+//
+///** initialize your data structure here. */
+//func Constructor() MinStack {
+//	return MinStack{
+//		[]int{},
+//		0,
+//		[]int{},
+//	}
+//}
+//
+//// 将元素 x 推入栈中. 顺便判断大小,记录最小值
+//func (this *MinStack) Push(x int) {
+//	if this.top == 0 {
+//		this.min = append(this.min, x)
+//		this.stack = []int{}
+//	} else {
+//		if x < this.GetMin() {
+//			this.min = append(this.min, x)
+//		} else {
+//			this.min = append(this.min, this.GetMin())
+//		}
+//	}
+//	this.stack = append(this.stack, x)
+//	this.top++
+//}
+//
+//// 删除栈顶的元素. 刪除的时候也要处理this.min的值
+//func (this *MinStack) Pop() {
+//	if this.top != 0 {
+//		this.top--
+//		this.stack = this.stack[:this.top]
+//		this.min = this.min[:this.top]
+//	}
+//}
+//
+//// 获取栈顶元素
+//func (this *MinStack) Top() int {
+//	if this.top != 0 {
+//		return this.stack[this.top-1]
+//	}
+//	return -1
+//}
+//
+//// 检索栈中的最小元素
+//func (this *MinStack) GetMin() int {
+//	return this.min[this.top-1]
+//}
+
+/* v2 评论看到的: 面试的时候被问到不能用额外空间，就去网上搜了下不用额外空间的做法。思路是栈里保存差值。
+我自己撸一发试试*/
 type MinStack struct {
 	stack []int
 	top   int
-	min   []int
 }
 
 /** initialize your data structure here. */
 func Constructor() MinStack {
-	return MinStack{
-		[]int{},
-		0,
-		[]int{},
-	}
+
 }
 
-// 将元素 x 推入栈中. 顺便判断大小,记录最小值
 func (this *MinStack) Push(x int) {
-	if this.top == 0 {
-		this.min = append(this.min, x)
-		this.stack = []int{}
-	} else {
-		if x < this.GetMin() {
-			this.min = append(this.min, x)
-		} else {
-			this.min = append(this.min, this.GetMin())
-		}
-	}
-	this.stack = append(this.stack, x)
-	this.top++
+
 }
 
-// 删除栈顶的元素. 刪除的时候也要处理this.min的值
 func (this *MinStack) Pop() {
-	if this.top != 0 {
-		this.top--
-		this.stack = this.stack[:this.top]
-		this.min = this.min[:this.top]
-	}
+
 }
 
-// 获取栈顶元素
 func (this *MinStack) Top() int {
-	if this.top != 0 {
-		return this.stack[this.top-1]
-	}
-	return -1
+
 }
 
-// 检索栈中的最小元素
 func (this *MinStack) GetMin() int {
-	return this.min[this.top-1]
+
 }
 
 /**
