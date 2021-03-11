@@ -119,31 +119,31 @@ package Stack
 
 /* v2 评论看到的: 面试的时候被问到不能用额外空间，就去网上搜了下不用额外空间的做法。思路是栈里保存差值。
 我自己撸一发试试*/
-type MinStack struct {
-	stack []int
-	top   int
-}
-
-/** initialize your data structure here. */
-func Constructor() MinStack {
-
-}
-
-func (this *MinStack) Push(x int) {
-
-}
-
-func (this *MinStack) Pop() {
-
-}
-
-func (this *MinStack) Top() int {
-
-}
-
-func (this *MinStack) GetMin() int {
-
-}
+//type MinStack struct {
+//	stack []int
+//	top   int
+//}
+//
+///** initialize your data structure here. */
+//func Constructor() MinStack {
+//
+//}
+//
+//func (this *MinStack) Push(x int) {
+//
+//}
+//
+//func (this *MinStack) Pop() {
+//
+//}
+//
+//func (this *MinStack) Top() int {
+//
+//}
+//
+//func (this *MinStack) GetMin() int {
+//
+//}
 
 /**
  * Your MinStack object will be instantiated and called as such:
