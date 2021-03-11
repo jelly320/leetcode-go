@@ -1,7 +1,6 @@
 package Stack
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -87,25 +86,25 @@ func TestStack(t *testing.T) {
 	//	obj5.Pop()
 	//	fmt.Println(obj5.GetMin())
 
-	obj := Constructor()
-	obj.Push(-10)
-	obj.Push(14)
-	fmt.Println(obj.GetMin()) //-10
-	fmt.Println(obj.GetMin()) //-10
-	obj.Push(-20)
-	fmt.Println(obj.GetMin()) //-20
-	fmt.Println(obj.GetMin()) //-20
-	fmt.Println(obj.Top())    //-20
-	fmt.Println(obj.GetMin()) //-20
-	obj.Pop()
-	obj.Push(10)
-	obj.Push(-7)
-	fmt.Println(obj.GetMin()) //-10
-	obj.Push(-7)
-	obj.Pop()
-	fmt.Println(obj)
-	fmt.Println(obj.Top()) //-7
-	fmt.Println(obj.GetMin())
-	obj.Pop()
+	//obj := Constructor()
+	//obj.Push(-10)
+	//obj.Push(14)
+	//fmt.Println(obj.GetMin()) //-10
+	//fmt.Println(obj.GetMin()) //-10
+	//obj.Push(-20)
+	//fmt.Println(obj.GetMin()) //-20
+	//fmt.Println(obj.GetMin()) //-20
+	//fmt.Println(obj.Top())    //-20
+	//fmt.Println(obj.GetMin()) //-20
+	//obj.Pop()
+	//obj.Push(10)
+	//obj.Push(-7)
+	//fmt.Println(obj.GetMin()) //-10
+	//obj.Push(-7)
+	//obj.Pop()
+	//fmt.Println(obj)
+	//fmt.Println(obj.Top()) //-7
+	//fmt.Println(obj.GetMin())
+	//obj.Pop()
 
 }
