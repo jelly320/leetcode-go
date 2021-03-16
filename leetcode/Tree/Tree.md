@@ -14,3 +14,13 @@
 从根结点 `A` 到目标结点 `G` 的路径
 [队列和BFS](https://leetcode-cn.com/leetbook/read/queue-stack/kyozi/)
 [栈和DFS](https://leetcode-cn.com/leetbook/read/queue-stack/gro21/)
+
+“高度 深度 层”的概念
+```
+                高度     深度    层 
+    a            2       0      1
+   / \                          
+  b   c          1       1      2
+ / \ / \
+d  f    g        0       2      3
+```
