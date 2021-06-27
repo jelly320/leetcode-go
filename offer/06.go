@@ -11,10 +11,10 @@ package offer
  *     Next *ListNode
  * }
  */
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
+//type ListNode struct {
+//	Val  int
+//	Next *ListNode
+//}
 
 func reversePrint(head *ListNode) []int {
 	temp := make([]int, 0)
