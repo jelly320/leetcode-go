@@ -7,25 +7,35 @@ import (
 
 func Test_Problem707(t *testing.T) {
 
+	//obj1 := Constructor()
+	//fmt.Printf("obj1 = %v\n", MList2Ints(&obj1))
+	//obj1.AddAtHead(1)
+	//fmt.Printf("obj1 = %v\n", MList2Ints(&obj1))
+	//obj1.AddAtTail(3)
+	//fmt.Printf("obj1 = %v\n", MList2Ints(&obj1))
+	//obj1.AddAtIndex(1, 2)
+	//fmt.Printf("obj1 = %v\n", MList2Ints(&obj1))
+	//param2 := obj1.Get(1)
+	//fmt.Printf("param_2 = %v obj1 = %v\n", param2, MList2Ints(&obj1))
+	//obj1.DeleteAtIndex(1)
+	//fmt.Printf("obj1 = %v\n", MList2Ints(&obj1))
+	//param2 = obj1.Get(1)
+	//fmt.Printf("param_2 = %v obj1 = %v\n", param2, MList2Ints(&obj1))
+
 	obj1 := Constructor()
 	fmt.Printf("obj1 = %v\n", MList2Ints(&obj1))
 	obj1.AddAtHead(1)
 	fmt.Printf("obj1 = %v\n", MList2Ints(&obj1))
 	obj1.AddAtTail(3)
 	fmt.Printf("obj1 = %v\n", MList2Ints(&obj1))
-
 	obj1.AddAtIndex(1, 2)
 	fmt.Printf("obj1 = %v\n", MList2Ints(&obj1))
-
 	param2 := obj1.Get(1)
 	fmt.Printf("param_2 = %v obj1 = %v\n", param2, MList2Ints(&obj1))
-
-	obj1.DeleteAtIndex(1)
+	obj1.DeleteAtIndex(0)
 	fmt.Printf("obj1 = %v\n", MList2Ints(&obj1))
-
-	param2 = obj1.Get(1)
+	param2 = obj1.Get(0)
 	fmt.Printf("param_2 = %v obj1 = %v\n", param2, MList2Ints(&obj1))
-
 	//obj := Constructor()
 	//fmt.Printf("obj = %v\n", MList2Ints(&obj))
 	//param1 := obj.Get(1)

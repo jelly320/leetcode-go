@@ -31,14 +31,12 @@ type MyLinkedList struct {
 
 /** Initialize your data structure here. */
 func Constructor() MyLinkedList {
-	return MyLinkedList{Val: -1, Next: nil} //这样的初始化方式意味着是存在一个虚拟的头结点的？
+	return MyLinkedList{Val: -999, Next: nil}
 }
 
 /** Get the value of the index-th node in the linked list. If the index is invalid, return -1. */
 func (this *MyLinkedList) Get(index int) int {
 	cur := this
-
-	// for中的条件，不一定是只能判断i，get了
 	for i := 0; cur != nil; i++ {
 		if i == index {
 			if cur.Val == -999 {
@@ -49,9 +47,7 @@ func (this *MyLinkedList) Get(index int) int {
 		}
 		cur = cur.Next
 	}
-
 	return -1
-
 }
 
 /** Add a node of value val before the first element of the linked list. After the insertion, the new node will be the first node of the linked list. */
@@ -63,7 +59,6 @@ func (this *MyLinkedList) AddAtHead(val int) {
 		this.Val = val
 		this.Next = tmp
 	}
-
 }
 
 /** Append a node of value val to the last element of the linked list. */
@@ -79,7 +74,6 @@ func (this *MyLinkedList) AddAtTail(val int) {
 /** Add a node of value val before the index-th node in the linked list. If index equals to the length of linked list, the node will be appended to the end of linked list. If index is greater than the length, the node will not be inserted. */
 func (this *MyLinkedList) AddAtIndex(index int, val int) {
 	cur := this
-
 	if index == 0 {
 		this.AddAtHead(val)
 		return
@@ -90,31 +84,34 @@ func (this *MyLinkedList) AddAtIndex(index int, val int) {
 		}
 		cur = cur.Next
 	}
-	tmp := &MyLinkedList{Val: val, Next: cur.Next}
-	cur.Next = tmp
+	if cur != nil && cur.Val != -999 {
+		tmp := &MyLinkedList{Val: val, Next: cur.Next}
+		cur.Next = tmp
+	}
 }
 
-//func (this *MyLinkedList) DeleteAtHead() {
-//
-//
-//}
-
-//func (this *MyLinkedList) DeleteAtTail() {
-//
-//}
+func (this *MyLinkedList) DeleteAtHead() *MyLinkedList {
+	if this.Val == -999 {
+		return this
+	}
+	return this.Next
+}
 
 /** Delete the index-th node in the linked list, if the index is valid. */
 func (this *MyLinkedList) DeleteAtIndex(index int) {
 	cur := this
-
-	for i := 0; cur != nil; i++ {
-		if i == index-1 {
-			break
-		}
+	if index == 0 {
 		cur = cur.Next
-	}
 
-	if cur != nil && cur.Next != nil {
-		cur.Next = cur.Next.Next
+	} else {
+		for i := 0; cur != nil; i++ {
+			if i == index-1 {
+				break
+			}
+			cur = cur.Next
+		}
+		if cur != nil && cur.Next != nil {
+			cur.Next = cur.Next.Next
+		}
 	}
 }
